@@ -73,7 +73,6 @@ class button_t : public noncopyable_t
   private:
     const decoration_theme_t& theme;
 
-    /* Whether the button needs repaint */
     button_type_t type;
     wf::simple_texture_t button_texture;
     bool active;
@@ -83,8 +82,6 @@ class button_t : public noncopyable_t
     bool is_hovered = false;
     /* Whether the button is currently being held */
     bool is_pressed = false;
-    /* The shade of button background to use. */
-    wf::animation::simple_animation_t hover{wf::create_option(100)};
 
     std::function<void()> damage_callback;
     wf::wl_idle_call idle_damage;

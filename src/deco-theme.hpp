@@ -53,9 +53,8 @@ class decoration_theme_t
         double height;
         /** Button outline size */
         double border;
-        /** Progress of button hover, in range [-1, 1].
-         * Negative numbers are usually used for pressed state. */
-        double hover_progress;
+        /* Hovering... */
+        bool hover;
     };
 
     /**

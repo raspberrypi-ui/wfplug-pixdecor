@@ -199,7 +199,7 @@ cairo_surface_t*decoration_theme_t::get_button_surface(button_type_t button,
                                         break;
     }
     iconfile = g_strdup_printf (THEME_PATH "assets/window-%s%s%s.symbolic.png",
-         icon_name, fabs (state.hover_progress) > 1e-3 ? "-hover" : "", get_font_height_px () >= LARGE_ICON_THRESHOLD ? "-large" : "");
+         icon_name, state.hover ? "-hover" : "", get_font_height_px () >= LARGE_ICON_THRESHOLD ? "-large" : "");
 
     // read the icon into a surface
     cspng = cairo_image_surface_create_from_png (iconfile);
