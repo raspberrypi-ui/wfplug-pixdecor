@@ -5,8 +5,6 @@
 #include <wayfire/nonstd/wlroots-full.hpp>
 #include <wayfire/util.hpp>
 
-#define BUTTON_HEIGHT_PC 0.7
-
 namespace wf
 {
 namespace decor

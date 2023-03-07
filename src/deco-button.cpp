@@ -86,12 +86,6 @@ void button_t::render(const wf::framebuffer_t& fb, wf::geometry_t geometry,
 
 void button_t::update_texture()
 {
-    /**
-     * We render at 100% resolution
-     * When uploading the texture, this gets scaled
-     * to 70% of the titlebar height. Thus we will have
-     * a very crisp image
-     */
     decoration_theme_t::button_state_t state = {
         .width  = 1.0 * this->geometry.width,
         .height = 1.0 * this->geometry.width,
