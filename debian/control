@@ -1,0 +1,39 @@
+Source: wfplug-pixdecor
+Section: x11
+Priority: optional
+Maintainer: Simon Long <simon@raspberrypi.com>
+Build-Depends:
+ cmake,
+ debhelper-compat (= 13),
+ doctest-dev <!nocheck>,
+ libcairo2-dev,
+ libdrm-dev,
+ libevdev-dev,
+ libfreetype-dev,
+ libgl-dev,
+ libglm-dev,
+ libinput-dev,
+ libjpeg-dev,
+ libpango1.0-dev,
+ libpixman-1-dev,
+ libpng-dev,
+ libwayland-dev,
+ libwf-config-dev,
+ libwlroots-dev,
+ libxkbcommon-dev,
+ libxml2-dev,
+ meson,
+ pkg-config,
+ wayland-protocols,
+Standards-Version: 4.6.0
+Rules-Requires-Root: no
+Homepage: https://raspberrypi.com/
+Vcs-Git: https://github.com/raspberrypi-ui/wfplug-pixdecor.git
+
+Package: wfplug-pixdecor
+Architecture: any
+Depends:
+ ${misc:Depends},
+ wayfire,
+Description: Pixdecor plugin for wayfire
+ The pixdecor plugin for wayfire, based on wayfire decoration plugin
