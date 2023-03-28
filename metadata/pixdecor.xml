@@ -14,5 +14,10 @@
 			<_long>Disables window decoration for windows matching the specified criteria.</_long>
 			<default>none</default>
 		</option>
+		<option name="always_decorate" type="string">
+			<_short>Decoration applied for specified window types</_short>
+			<_long>Forces window decoration for windows matching the specified criteria.</_long>
+			<default>none</default>
+		</option>
 	</plugin>
 </wayfire>

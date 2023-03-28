@@ -22,6 +22,7 @@ class wayfire_pixdecor :
     public wf::singleton_plugin_t<wayfire_pixdecor_global_cleanup_t, true>
 {
     wf::view_matcher_t ignore_views{"pixdecor/ignore_views"};
+    wf::view_matcher_t always_decorate{"pixdecor/always_decorate"};
 
     wf::signal_connection_t view_updated{
         [=] (wf::signal_data_t *data)
@@ -58,10 +59,15 @@ class wayfire_pixdecor :
         return ignore_views.matches(view);
     }
 
+    bool always_decorate_view(wayfire_view view)
+    {
+        return always_decorate.matches(view);
+    }
+
     wf::wl_idle_call idle_deactivate;
     void update_view_decoration(wayfire_view view)
     {
-        if (view->should_be_decorated() && !ignore_decoration_of_view(view))
+        if (always_decorate_view (view) || (view->should_be_decorated() && !ignore_decoration_of_view(view)))
         {
             if (output->activate_plugin(grab_interface))
             {
