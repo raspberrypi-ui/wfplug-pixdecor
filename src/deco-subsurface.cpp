@@ -19,7 +19,7 @@
 
 #include <cairo.h>
 
-#define XWAYLAND_NOTICE " (X)"
+#define TITLE_SUFFIX ""
 
 class simple_decoration_surface : public wf::surface_interface_t,
     public wf::compositor_surface_t, public wf::decorator_frame_t_t
@@ -42,11 +42,11 @@ class simple_decoration_surface : public wf::surface_interface_t,
         int target_width  = width * scale;
         int target_height = height * scale;
 
-        auto surface = theme.render_text(view->get_title() + XWAYLAND_NOTICE,
+        auto surface = theme.render_text(view->get_title() + TITLE_SUFFIX,
             target_width, target_height, t_width, active);
         cairo_surface_upload_to_texture(surface, title_texture.tex);
         cairo_surface_destroy(surface);
-        title_texture.current_text = view->get_title() + XWAYLAND_NOTICE;
+        title_texture.current_text = view->get_title() + TITLE_SUFFIX;
     }
 
     int width = 100, height = 100;
