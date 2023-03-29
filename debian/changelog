@@ -1,8 +1,14 @@
-wfplug-pixdecor (0.2) bookworm; urgency=medium
+wfplug-pixdecor (0.3) bookworm; urgency=medium
 
   * Remove title suffix; add always-decorate option
 
  -- Simon Long <simon@raspberrypi.com>  Wed, 29 Mar 2023 11:58:38 +0100
+
+wfplug-pixdecor (0.2) bookworm; urgency=medium
+
+  * Remove unnecessary directory from source package
+
+ -- Simon Long <simon@raspberrypi.com>  Wed, 15 Mar 2023 14:02:14 +0000
 
 wfplug-pixdecor (0.1) bookworm; urgency=medium
 
