@@ -67,11 +67,6 @@ decoration_theme_t::decoration_theme_t()
         || read_colour (NULL, "theme_unfocused_fg_color", &r, &g, &b))
             bg_text = {r, g, b, 1.0};
     else bg_text = {1.0, 1.0, 1.0, 1.0};
-#ifdef TRANSPARENT
-    border = {0.0, 0.0, 0.0, 0.0};
-#else
-    border = bg;
-#endif
 
     g_free (userconf);
 }
@@ -127,15 +122,10 @@ void decoration_theme_t::render_background(const wf::framebuffer_t& fb,
     wf::color_t color = active ? fg : bg;
     OpenGL::render_begin(fb);
     fb.logic_scissor(scissor);
-    OpenGL::render_rectangle(rectangle, border, fb.get_orthographic_projection());
-#ifdef TRANSPARENT
     rectangle.x += get_border_size ();
     rectangle.y += get_border_size ();
     rectangle.height = get_title_height ();
     rectangle.width -= 2 * get_border_size ();
-#else
-    rectangle.height = get_title_height () + get_border_size ();
-#endif
     OpenGL::render_rectangle(rectangle, color, fb.get_orthographic_projection());
     OpenGL::render_end();
 }

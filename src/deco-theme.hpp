@@ -77,7 +77,6 @@ class decoration_theme_t
 	wf::color_t bg;
 	wf::color_t fg_text;
 	wf::color_t bg_text;
-	wf::color_t border;
 	bool maximized;
 };
 }
