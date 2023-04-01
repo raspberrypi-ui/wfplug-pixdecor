@@ -92,7 +92,7 @@ int decoration_theme_t::get_title_height() const
     int height = get_font_height_px ();
     height *= 3;
     height /= 2;
-    height += 5;
+    height += 8;
     if (height < MIN_BAR_HEIGHT) return MIN_BAR_HEIGHT;
     else return height;
 }
