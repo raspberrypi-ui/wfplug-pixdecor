@@ -1,3 +1,9 @@
+wfplug-pixdecor (0.4) bookworm; urgency=medium
+
+  * Invisible borders and rounded corners
+
+ -- Simon Long <simon@raspberrypi.com>  Mon, 03 Apr 2023 09:17:32 +0100
+
 wfplug-pixdecor (0.3) bookworm; urgency=medium
 
   * Remove title suffix; add always-decorate option
