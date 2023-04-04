@@ -274,6 +274,7 @@ class simple_decoration_surface : public wf::surface_interface_t,
     virtual void notify_view_resized(wf::geometry_t view_geometry) override
     {
         theme.set_maximize (view->tiled_edges);
+        layout.set_maximize (view->tiled_edges);
         view->damage();
         width  = view_geometry.width;
         height = view_geometry.height;
@@ -292,10 +293,10 @@ class simple_decoration_surface : public wf::surface_interface_t,
 
     void update_decoration_size()
     {
-        if (view->fullscreen)
+        if (view->tiled_edges)
         {
             current_thickness = 0;
-            current_titlebar  = 0;
+            current_titlebar  = theme.get_title_height();
             this->cached_region.clear();
         } else
         {

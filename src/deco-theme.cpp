@@ -122,11 +122,12 @@ void decoration_theme_t::render_background(const wf::framebuffer_t& fb,
     wf::color_t color = active ? fg : bg;
     OpenGL::render_begin (fb);
     fb.logic_scissor (scissor);
+    int border = maximized ? 0 : get_border_size ();
 
     // adjust for invisible border
-    rectangle.x += get_border_size ();
-    rectangle.y += get_border_size ();
-    rectangle.width -= 2 * get_border_size ();
+    rectangle.x += border;
+    rectangle.y += border;
+    rectangle.width -= 2 * border;
 
     // draw top line 2 pixels shorter at each end
     rectangle.height = 1;

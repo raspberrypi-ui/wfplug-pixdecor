@@ -101,9 +101,10 @@ wf::geometry_t decoration_layout_t::create_buttons(int width, int)
     }
 
     int per_button = 2 * BUTTON_W_PAD + button_width;
+    int border = maximized ? 0 : border_size;
     wf::geometry_t button_geometry = {
-        width - border_size,
-        button_padding + border_size,
+        width - border,
+        button_padding + border,
         button_width,
         button_height,
     };
@@ -119,7 +120,7 @@ wf::geometry_t decoration_layout_t::create_buttons(int width, int)
     int total_width = buttons.size() * per_button;
 
     return {
-        button_geometry.x, border_size,
+        button_geometry.x, border,
         total_width, titlebar_size
     };
 }
@@ -127,6 +128,8 @@ wf::geometry_t decoration_layout_t::create_buttons(int width, int)
 /** Regenerate layout using the new size */
 void decoration_layout_t::resize(int width, int height)
 {
+    int border = maximized ? 0 : border_size;
+
     this->layout_areas.clear();
     if (this->titlebar_size > 0)
     {
@@ -138,11 +141,11 @@ void decoration_layout_t::resize(int width, int height)
 
         /* Titlebar dragging area (for move) */
         wf::geometry_t title_geometry = {
-            border_size,
-            border_size,
+            border,
+            border,
             /* Up to the button, but subtract the padding to the left of the
              * title and the padding between title and button */
-            button_geometry_expanded.x - border_size,
+            button_geometry_expanded.x - border,
             titlebar_size,
         };
         this->layout_areas.push_back(std::make_unique<decoration_area_t>(
@@ -150,22 +153,22 @@ void decoration_layout_t::resize(int width, int height)
     }
 
     /* Resizing edges - left */
-    wf::geometry_t border_geometry = {0, 0, border_size, height};
+    wf::geometry_t border_geometry = {0, 0, border, height};
     this->layout_areas.push_back(std::make_unique<decoration_area_t>(
         DECORATION_AREA_RESIZE_LEFT, border_geometry));
 
     /* Resizing edges - right */
-    border_geometry = {width - border_size, 0, border_size, height};
+    border_geometry = {width - border, 0, border, height};
     this->layout_areas.push_back(std::make_unique<decoration_area_t>(
         DECORATION_AREA_RESIZE_RIGHT, border_geometry));
 
     /* Resizing edges - top */
-    border_geometry = {0, 0, width, border_size};
+    border_geometry = {0, 0, width, border};
     this->layout_areas.push_back(std::make_unique<decoration_area_t>(
         DECORATION_AREA_RESIZE_TOP, border_geometry));
 
     /* Resizing edges - bottom */
-    border_geometry = {0, height - border_size, width, border_size};
+    border_geometry = {0, height - border, width, border};
     this->layout_areas.push_back(std::make_unique<decoration_area_t>(
         DECORATION_AREA_RESIZE_BOTTOM, border_geometry));
 }
@@ -356,6 +359,11 @@ void decoration_layout_t::update_cursor() const
     auto cursor_name = edges > 0 ?
         wlr_xcursor_get_resize_name((wlr_edges)edges) : "default";
     wf::get_core().set_cursor(cursor_name);
+}
+
+void decoration_layout_t::set_maximize(bool state)
+{
+    maximized = state;
 }
 
 void decoration_layout_t::handle_focus_lost()

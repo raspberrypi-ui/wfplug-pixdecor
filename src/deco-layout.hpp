@@ -137,6 +137,8 @@ class decoration_layout_t
      */
     void handle_focus_lost();
 
+    void set_maximize (bool state);
+
   private:
     const int titlebar_size;
     const int border_size;
@@ -144,6 +146,7 @@ class decoration_layout_t
     const int button_height;
     const int button_padding;
     const decoration_theme_t& theme;
+    bool maximized;
 
     std::function<void(wlr_box)> damage_callback;
 
