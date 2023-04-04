@@ -91,7 +91,7 @@ class simple_decoration_surface : public wf::surface_interface_t,
 
         // make sure to hide frame if the view is fullscreen
         update_decoration_size();
-     }
+    }
 
     virtual ~simple_decoration_surface()
     {
