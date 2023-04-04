@@ -72,9 +72,26 @@ class simple_decoration_surface : public wf::surface_interface_t,
         view->connect_signal("title-changed", &title_set);
         view->connect_signal("subsurface-removed", &on_subsurface_removed);
 
+        /* This is really kludgy, but is invisible to the user...
+         * If an application opens in a maximised state, before the window opens,
+         * de-maximise and re-maximise it. This then forces a sensible default
+         * un-maximised size, preventing problems with the window vanishing when
+         * the user un-maxes it if it didn't actually have an un-maxed size.
+         * It also fixes a problem where the first time a window which was opened
+         * maxed is un-maxed, the window draws larger than the frame, which has
+         * resisted every attempted solution I can think of.
+         * I'm open to suggestions for a better approach, but this works!
+         */
+
+        if (view->tiled_edges)
+        {
+            view->tile_request (0);
+            view->tile_request (wf::TILED_EDGES_ALL);
+        }
+
         // make sure to hide frame if the view is fullscreen
         update_decoration_size();
-    }
+     }
 
     virtual ~simple_decoration_surface()
     {
