@@ -310,10 +310,10 @@ class simple_decoration_surface : public wf::surface_interface_t,
 
     void update_decoration_size()
     {
-        if (view->tiled_edges)
+        if (view->tiled_edges || view->fullscreen)
         {
             current_thickness = 0;
-            current_titlebar  = theme.get_title_height();
+            current_titlebar  = view->fullscreen ? 0 : theme.get_title_height();
             this->cached_region.clear();
         } else
         {
@@ -332,7 +332,6 @@ class simple_decoration_surface : public wf::surface_interface_t,
         {
             notify_view_resized(view->get_wm_geometry());
         }
-        else deinit_view (view);
     }
 };
 
