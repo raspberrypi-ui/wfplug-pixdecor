@@ -67,7 +67,7 @@ class wayfire_pixdecor :
     wf::wl_idle_call idle_deactivate;
     void update_view_decoration(wayfire_view view)
     {
-        if (always_decorate_view (view) || (view->should_be_decorated() && !ignore_decoration_of_view(view)))
+        if (!view->fullscreen && (always_decorate_view (view) || (view->should_be_decorated() && !ignore_decoration_of_view(view))))
         {
             if (output->activate_plugin(grab_interface))
             {

@@ -332,6 +332,7 @@ class simple_decoration_surface : public wf::surface_interface_t,
         {
             notify_view_resized(view->get_wm_geometry());
         }
+        else deinit_view (view);
     }
 };
 
