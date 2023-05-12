@@ -89,7 +89,7 @@ class simple_decoration_surface : public wf::surface_interface_t,
             view->tile_request (wf::TILED_EDGES_ALL);
         }
 
-        /* ...and we need to do the same sort of kludge for an application which 
+        /* ...and we need to do the same sort of kludge for an application which
          * opens in the fullscreen state, because otherwise the window furniture
          * does not get drawn when the window is de-full-screened...
          */
