@@ -317,7 +317,9 @@ class simple_decoration_surface : public wf::surface_interface_t,
     }
 
     virtual void notify_view_tiled() override
-    {}
+    {
+        update_decoration_size();
+    }
 
     void update_decoration_size()
     {
