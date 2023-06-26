@@ -139,7 +139,7 @@ class simple_decoration_surface : public wf::surface_interface_t,
          }
        else
          {
-            Pixman::render_texture(title_texture.tex.tex, fb, geometry,
+            Pixman::render_texture(title_texture.tex.texture, fb, geometry,
                                    glm::vec4(1.0f));
          }
     }

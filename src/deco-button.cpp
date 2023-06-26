@@ -64,7 +64,7 @@ void button_t::render(const wf::framebuffer_t& fb, wf::geometry_t geometry,
      {
         Pixman::render_begin(fb);
         fb.logic_scissor(scissor);
-        Pixman::render_texture(button_texture.tex, fb, geometry, {1, 1, 1, 1});
+        Pixman::render_texture(button_texture.texture, fb, geometry, {1, 1, 1, 1});
         Pixman::render_end();
      }
 }
@@ -89,9 +89,7 @@ void button_t::update_texture()
      }
    else
      {
-        Pixman::render_begin(state.width, state.height);
         cairo_surface_upload_to_texture(surface, this->button_texture);
-        Pixman::render_end();
      }
 
    cairo_surface_destroy(surface);
